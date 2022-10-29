@@ -14,4 +14,7 @@ please feel free to contact me at my phone number or my email address
 - Phone Number [0096170213460](tel:+0096170213460)
 - Email Address [khaledhyk.123@gmail.com](mailto:khaledhyk.123@gmail.com)
 
+## Website
+Go live, visit the webiste [from here](https://khaledalhayek.github.io/weather_app/)
+ 
 ### Thanks
