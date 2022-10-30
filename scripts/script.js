@@ -8,6 +8,9 @@ const CountriesListBox = document.querySelector(".country-cities-list");
 const mainInput = document.querySelector(".main-input");
 const list = document.querySelector(".cities-list");
 
+// new weather object
+const weather = new Weather();
+
 // general information main box
 const infoBox = document.querySelector(".weather-box .info");
 
@@ -132,18 +135,6 @@ const generalInfo = data => {
   infoBox.innerHTML = html;
 };
 
-// get city information
-const updateCity = async city => {
-  const cityDetails = await getCity(city);
-  if(cityDetails){
-    const cityConditions = await getWeather(cityDetails.Key);
-    return {
-      details: cityDetails,
-      weather: cityConditions
-    }
-  }
-};
-
 // city form
 cityForm.addEventListener("submit", e => {
   e.preventDefault();
@@ -200,7 +191,7 @@ cityForm.addEventListener("submit", e => {
       </div>
     `;
     infoBox.innerHTML = skeletonScreen;
-    updateCity(cityName)
+    weather.updateCity(cityName)
     .then(data => {
       if(data){
         cityCard.classList.remove("show-loader");
@@ -263,8 +254,7 @@ search.addEventListener("keyup", e => {
     if(e.keyCode === 13){
       // show list
       CountriesListBox.style.display = "block";
-
-      getTopCountryCities().then(data => {
+      weather.getTopCountryCities().then(data => {
         for(country in data){
           if(country.toLowerCase().includes(term)){
             injectCities(country, data[country]);
